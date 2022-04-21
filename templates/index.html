@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SDFBDFD</title>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/highlight.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/blocks.css') }}">
+  
+  <script type="text/javascript" src="{{ url_for('static', filename='js/drag.js') }}" defer></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/generate.js') }}" defer></script>
+</head>
+<body>
+  <div class="blocks">
+    <div class="center">
+      <button onclick="generate()">Generate</button>
+      <button onclick="clearPlayground()">Clear</button>
+    </div>
+    <div class="container menu">  
+      <div class="menu-options">
+        <a href="#replies">Replies</a>
+        <a href="#id">IDs</a>
+      </div>
+    </div>
+    <div class="container options" ondrop="del(event)" ondragover="allowDrop(event)">
+      <section id="id">
+        <p class="draggable" draggable="true" ondragstart="drag(event)" id="b004">Performer userID</p>
+        <p class="draggable" draggable="true" ondragstart="drag(event)" id="b005">Mentioned userID</p>
+      </section>
+      <section id="replies">
+        <p class="draggable" draggable="true" ondragstart="drag(event)" id="b001">Title &emsp;<textarea id="input" placeholder="Title" ondragover="allowDrop(event)"></textarea></p>
+        <p class="draggable" draggable="true" ondragstart="drag(event)" id="b002">Description &emsp;<textarea id="input" placeholder="Description" ondragover="allowDrop(event)"></textarea></p>
+        <p class="draggable" draggable="true" ondragstart="drag(event)" id="b003">Footer &emsp;<textarea id="input" placeholder="Footer" ondragover="allowDrop(event)"></textarea></p>
+      </section>
+    </div>
+  </div>
+  <div class="playground" id="playground">
+    <div class="container" ondrop="drop(event)" ondragover="allowDrop(event)" id="playground-container">
+      
+    </div>
+  </div>
+
+  <div class="code hidden" id="code">
+    <h1>Code</h1>
+    <div class="codeblock">
+      <pre><code></code></pre>
+    </div>
+    <div class="center">
+      <button onclick="closepopup()">Close</button>
+      <button onclick="copy()">Copy</button>
+    </div>
+  </div>
+<script>
+  const replies = document.getElementById("replies");
+  const general = document.getElementById("id");
+
+  replies.style.display = "none";
+  general.style.display = "none";
+  
+  function page(loc) {
+    replies.style.display = "none";
+    general.style.display = "none";
+    
+    if (loc === undefined){
+      replies.style.display = "block"
+      general.style.display = "block"
+    } else if (loc === "replies") {
+      replies.style.display = "block"
+    } else if (loc === "id") {
+      general.style.display = "block"
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    const loc = window.location.href.split("#")[1];  
+
+    page(loc)
+  });
+  
+  window.addEventListener('hashchange', function() {
+    const loc = window.location.href.split("#")[1];  
+
+    page(loc)
+  })
+  
+  function clearPlayground() {
+    document.getElementById("playground-container").innerHTML = "";
+  }
+  function closepopup() {
+    const codeblock = document.getElementById("code");
+    codeblock.classList.add("hidden");
+  }
+  function copy() {
+    const codes = document.getElementsByTagName('span');
+    var code = "";
+
+    for (let i of codes) {
+      if (i.innerText !== "" || i.innerText !== "\n") {
+        code += i.innerText;
+      } 
+    }
+
+    navigator.clipboard.writeText(code);
+  }
+</script>
+</body>
+</html>

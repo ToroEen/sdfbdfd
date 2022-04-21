@@ -1,0 +1,106 @@
+:root {
+  --font: Calibri;
+  --mbg-clr: #13111c;
+  --bg-clr: #1e1b2b;
+  --acc-clr: #3c3a4a;
+  --acc-clr-op: rgb(60, 58, 74, 0.5);
+  --hig-clr: #4e3474;
+}
+
+body {
+  margin: 0;
+  background: var(--mbg-clr);
+  background-image: radial-gradient(var(--acc-clr) 1px, transparent 0);
+  background-size: 40px 40px;
+  display: flex;
+  font-family: var(--font);
+}
+
+.blocks {
+  position: fixed;
+  float: left;
+  flex: 20%;
+  height: 100vh;
+  width: 20%;
+}
+.playground {
+  float: right;
+  flex: 80%;
+  margin-left: 20%;
+}
+.playground .container {
+  background: transparent !important;
+  border: none !important;
+  height: 100vh;
+}
+.container {
+  background-color: var(--bg-clr);
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid var(--acc-clr);
+  border-radius: 10px;
+}
+.menu {
+  height: 50px;
+}
+.options {
+  height: calc(100vh - 8rem - 125px);
+  overflow-y: scroll;
+}
+.code {
+  position: absolute;
+  top: 20%;  
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background: var(--bg-clr);
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid var(--acc-clr);
+  border-radius: 10px;
+  width: 50%;
+}
+.codeblock {
+  background: var(--mbg-clr);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.code h1 {
+  text-align: center;
+}
+.hidden {
+  visibility: hidden;
+}
+pre {
+  margin: 0px;
+}
+code {
+  font-size: 15px;
+}
+button {
+  margin-top: 1rem;
+  font-family: var(--font);
+  font-size: 20px;
+  color: #fff;
+  border: 1px solid var(--acc-clr);
+  border-radius: 10px;
+  background: var(--bg-clr);
+  padding: 10px 20px;
+}
+button:hover {
+  cursor: pointer;
+  background: var(--acc-clr-op);
+}
+.center {
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 2px;
+  background-color: transparent;
+}
