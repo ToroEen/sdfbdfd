@@ -1,4 +1,5 @@
 .draggable {
+  text-align: left;
   padding: 1rem;
   cursor: move;
   border-radius: 10px; 
@@ -22,31 +23,28 @@
   font-family: var(--font);
   font-size: 15px;
 }
-#b001, #b002, #b003, #b001c ,#b002c, #b003c {
+.reply {
   background: #9966ff;
 }
 #b004, #b005, #b004c, #b005c {
   background: #40bf4a;
 }
-#b001.draggable {
+.top.draggable {
   border-radius: 10px 10px 0px 0px;
 }
-#b002.draggable {
+.center.draggable {
   border-radius: 0px;
 }
-#b003.draggable {
+.bottom.draggable {
   border-radius: 0px 0px 10px 10px;
 }
 
-#b001c.draggable {
-  margin: 20px 0px 0px 0px;
-  border-radius: 10px 10px 0px 0px;
+.playground .top {
+  margin-bottom: 0px;
 }
-#b002c.draggable {
+.playground .center {
   margin: 0px;
-  border-radius: 0px;
 }
-#b003c.draggable {
-  margin: 0px 0px 20px 0px;
-  border-radius: 0px 0px 10px 10px;
+.playground .bottom {
+  margin-top: 0px;
 }
